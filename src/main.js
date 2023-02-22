@@ -6,7 +6,7 @@ import store from "./store";
 createApp(App).use(store).mount("#app");
 // createApp(App).use(store).use(router).mount('#app')
 
-let url = "http://localhost:8080/oauth/get-token.php";
+// let url = "http://localhost:8080/oauth/get-token.php";
 // let url = "https://test.gnzs.ru/oauth/get-token.php";
 
 // let response = fetch(url, {
@@ -20,25 +20,25 @@ let url = "http://localhost:8080/oauth/get-token.php";
 //   .then((res) => console.log(res))
 //   .catch((err) => console.log(err));
 
-let deal = "/api/v4/leads";
-let dealData = [{ name: "Сделка" }];
+// let deal = "/api/v4/leads";
+// let dealData = [{ name: "Сделка" }];
 
-let contact = "/api/v4/contacts";
-let contactData = [{ name: "Контакт" }];
+// let contact = "/api/v4/contacts";
+// let contactData = [{ name: "Контакт" }];
 
-fetch(contact, {
-  method: "POST",
-  body: JSON.stringify(contactData),
-  headers: {
-    "Content-Type": "application/json",
-    Authorization:
-      "Bearer " +
-      "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjYxZjA3NzZlNzAxZmZlMjY3ZDNmMTA2NzFhMjlmODUzZmU5ZTM5MjYzN2IwNDIzNTc5OTEwMjNkZTIyYWEzMzRjY2M3YTI0NGExZjhmOTFhIn0.eyJhdWQiOiIxYjkzYzk5NC1kNDM0LTQwNTctODI0OS03ZTVjNzNkZTFhYWEiLCJqdGkiOiI2MWYwNzc2ZTcwMWZmZTI2N2QzZjEwNjcxYTI5Zjg1M2ZlOWUzOTI2MzdiMDQyMzU3OTkxMDIzZGUyMmFhMzM0Y2NjN2EyNDRhMWY4ZjkxYSIsImlhdCI6MTY3NzA0NzM4NywibmJmIjoxNjc3MDQ3Mzg3LCJleHAiOjE2NzcxMzM3ODcsInN1YiI6IjczODA4ODMiLCJhY2NvdW50X2lkIjozMDg3ODU2NiwiYmFzZV9kb21haW4iOiJhbW9jcm0ucnUiLCJzY29wZXMiOlsiY3JtIl19.d6adjWw2eYRhv2V71Ru6UaSCT6dSc29v4uaNTuf1IMpR0aqJPalyJiSOVBhD-ccZldOMCLzBDhwLx3lTLC60tEw3pN2_WjcvmJ0xfccNvy_tX_sMJbIj0rbuj7099UxniYiOq95km0cM1ibHYre67GOy_ngXyUZJuOElhWClDT5hXzbAVrU3OHNXGGxwOFQD5wwrndUaO0FdOKDjVZvyMV7EUXUac5-WVDD97sDO7k7rdFRiIjDQVvz6K7-jKI3FnirJFn8PcWt8mzGu-YhvC-Wq8RCukcXwM6zsGl0Q_dY1xUmVc43Ucvj0gRlNhRDz5H0yJ3jGZMmyJS4pHdLnhA",
-  },
-})
-  .then((res) => res.json())
-  .then((data) => console.log(data._embedded.contacts[0].id + " main"))
-  .catch((err) => console.log(err));
+// fetch(contact, {
+//   method: "POST",
+//   body: JSON.stringify(contactData),
+//   headers: {
+//     "Content-Type": "application/json",
+//     Authorization:
+//       "Bearer " +
+//       "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjYxZjA3NzZlNzAxZmZlMjY3ZDNmMTA2NzFhMjlmODUzZmU5ZTM5MjYzN2IwNDIzNTc5OTEwMjNkZTIyYWEzMzRjY2M3YTI0NGExZjhmOTFhIn0.eyJhdWQiOiIxYjkzYzk5NC1kNDM0LTQwNTctODI0OS03ZTVjNzNkZTFhYWEiLCJqdGkiOiI2MWYwNzc2ZTcwMWZmZTI2N2QzZjEwNjcxYTI5Zjg1M2ZlOWUzOTI2MzdiMDQyMzU3OTkxMDIzZGUyMmFhMzM0Y2NjN2EyNDRhMWY4ZjkxYSIsImlhdCI6MTY3NzA0NzM4NywibmJmIjoxNjc3MDQ3Mzg3LCJleHAiOjE2NzcxMzM3ODcsInN1YiI6IjczODA4ODMiLCJhY2NvdW50X2lkIjozMDg3ODU2NiwiYmFzZV9kb21haW4iOiJhbW9jcm0ucnUiLCJzY29wZXMiOlsiY3JtIl19.d6adjWw2eYRhv2V71Ru6UaSCT6dSc29v4uaNTuf1IMpR0aqJPalyJiSOVBhD-ccZldOMCLzBDhwLx3lTLC60tEw3pN2_WjcvmJ0xfccNvy_tX_sMJbIj0rbuj7099UxniYiOq95km0cM1ibHYre67GOy_ngXyUZJuOElhWClDT5hXzbAVrU3OHNXGGxwOFQD5wwrndUaO0FdOKDjVZvyMV7EUXUac5-WVDD97sDO7k7rdFRiIjDQVvz6K7-jKI3FnirJFn8PcWt8mzGu-YhvC-Wq8RCukcXwM6zsGl0Q_dY1xUmVc43Ucvj0gRlNhRDz5H0yJ3jGZMmyJS4pHdLnhA",
+//   },
+// })
+//   .then((res) => res.json())
+//   .then((data) => console.log(data._embedded.contacts[0].id + " main"))
+//   .catch((err) => console.log(err));
 
 // let response3 = fetch(deal, {
 //   method: "POST",

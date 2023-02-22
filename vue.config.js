@@ -4,8 +4,7 @@ module.exports = defineConfig({
   transpileDependencies: true,
   devServer: {
     proxy: {
-      "https://evgeniiiif.github.io/api/*": {
-        // target: "https://d6757be6f1100.amocrm.ru/",
+      "/api/*": {
         target: "https://d6757be6f1100.amocrm.ru/",
         ws: true,
         changeOrigin: true,
