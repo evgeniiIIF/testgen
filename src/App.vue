@@ -21,7 +21,7 @@
         </tr>
       </thead>
       <tr v-for="item in createdEntities" :key="item.id">
-        <td>{{ item.entity }}</td>
+        <td>{{ item.name }}</td>
         <td>{{ item.id }}</td>
       </tr>
       <tr></tr>
@@ -48,48 +48,38 @@ export default {
       dropdownItems: ['Не выбрано', 'Сделка', 'Контакт', 'Компания'],
       hasSelected: false,
       entity: null,
-      createdEntities: [],
-      id: 0,
     }
   },
   methods: {
-    ...mapActions(['aCreateEntity']),
+    ...mapActions(['aCreateEntity', 'aInit', 'aClearEntities']),
     onSelectedItem(e) {
       this.hasSelected = e.hasSelected
       this.entity = e.selected
     },
     createEntity() {
-      this.aCreateEntity()
-      setTimeout(() => {
-        this.createdEntities.push({
-          entity: this.entity,
-          id: ++this.id
-        })
-        this.saveEntity()
-      }, 1000)
-    },
-    saveEntity() {
-      let entities = JSON.stringify(this.createdEntities)
-      localStorage.setItem('entities', entities)
+      this.aCreateEntity(this.entity)
     },
     clearEntities() {
-      this.createdEntities = []
-      localStorage.removeItem('entities')
+      this.aClearEntities()
     }
   },
   computed: {
-    ...mapGetters(['loading']),
+    ...mapGetters(['loading', 'createdEntities']),
   },
   mounted() {
-    if (localStorage.getItem('entities')) {
-      this.createdEntities = JSON.parse(localStorage.getItem('entities'));
-    }
+    this.aInit()
   },
 
 }
 </script>
 <style lang="scss">
 .v-app {
+  width: 90%;
+  border: 1px solid #b8b6b6;
+  border-radius: 4px;
+  margin: 0 auto;
+  padding: 20px 30px;
+
   &>* {
     margin-bottom: 30px;
   }
@@ -110,7 +100,7 @@ export default {
 
     &:disabled {
       background: #eee;
-      color: rgb(206, 206, 206);
+      color: #cecece;
       cursor: not-allowed;
     }
   }
@@ -123,8 +113,9 @@ export default {
     td {
       padding: 10px 20px;
       width: 50%;
-      border: 1px solid #000;
+      border: 1px solid #b8b6b6;
       text-align: center;
+      color: #5c5c5c;
     }
   }
 }
